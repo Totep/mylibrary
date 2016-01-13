@@ -5,9 +5,8 @@ app.controller("IndexController", ['$scope', '$http', function($scope, $http) {
     var fetchBooks = function() {
         return $http.get('/book').then(function(response){
             if(response.status !== 200){
-                throw new Error('Failed to fetch books from the API');
+                throw new Error('Failed');
             }
-            console.log(response.data);
             $scope.book = {};
             $scope.books = response.data;
             return response.data;
@@ -18,10 +17,15 @@ app.controller("IndexController", ['$scope', '$http', function($scope, $http) {
            url: '/book',
            method: 'post',
            data: book
-    }).then(function(response){
+       }).then(function(response){
+           $scope.book = {};
        });
     };
     $scope.get = function() {
+        if ($scope.searchText < 3){
+            $scope.books = [];
+            return;
+        }
         $http({
             url: '/book/search',
             method: 'get'
@@ -29,15 +33,12 @@ app.controller("IndexController", ['$scope', '$http', function($scope, $http) {
             $scope.books = response.data;
         })
     };
-    $scope.resetForm = function(){
 
-
-    };
     $scope.hover = function(books) {
         return books.showDelete = ! books.showDelete;
     };
-    $scope.remove = function(books){
-        alert("Deleting the book " + book.title);hot
+    $scope.delete = function(books){
+        alert("Deleting the book " + book.title);
         return books.show = false;
     };
 

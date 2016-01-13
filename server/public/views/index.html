@@ -35,12 +35,14 @@
         Notes: <input type="text" ng-model="book.notes"/><br/><br/>
         ISBN: <input type="text" ng-model="book.isbn"/><br/><br/>
         <button ng-click="insert(book)" type="button" value="Save"/>Submit!</button>
-        <button type="button" ng-click"resetForm()">Reset</button>
+        <!--<button type="button" ng-click"resetForm()">Reset</button>-->
     </form>
 
-    <h4>Books</h4>
+    <h4>My Books</h4><br/>
+    <label>Search Your Library: <input ng-model="searchText" ng-change="get()" ng-minlength="3"</label>
+    <br/><br/>
     <table>
-        <tr ng-repeat="book in books | orderBy: 'authorLast'| filter: searchText track by $index" ng-mouseenter="hover(book)" ng-mouseleave="hover(book)">
+        <tr ng-repeat="book in books | orderBy: ['authorLast', 'title'] | filter: searchText track by $index" ng-mouseenter="hover(book)" ng-mouseleave="hover(book)">
             <td>{{book.title}}</td>
             <td>{{book.authorLast}}</td>
             <td>{{book.authorFirst}}</td>
@@ -51,7 +53,7 @@
         </tr>
     </table>
     <br>
-    <label>Search Your Library: <input ng-model="searchText" ng-change="get()" ng-minlength="3"</label>
+
 
     <div id="apiSearch">
         <label>Search API for Book: <input ng-model="fetchBook" ng-change="fetchBooks()"</label>

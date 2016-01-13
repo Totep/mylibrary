@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h4>Search for Book</h4>
+<table>
+    <tr ng-repeat="book in books | filter: searchText track by $index" ng-mouseenter="hover(book)" ng-mouseleave="hover(book)" ng-show="book.show">
+        <td>{{book.title}}</td>
+        <td>{{book.authorLast}}</td>
+        <td>{{book.authorFirst}}</td>
+        <td>{{book.genre}}</td>
+        <td>{{book.isbn}}</td>
+        <td><a ng-show="book.showAdd" ng-click="add(book)">Add to Library</a></td>
+    </tr>
+</table>
+</body>
+</html>

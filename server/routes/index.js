@@ -1,15 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-//var mongoose = require('mongoose');
 var Book = require('../models/book.js');
-
 
 
 router.get('/', function(req, res, next) {
     console.log('Made it to route!');
     res.sendFile(path.join(__dirname,'../public/views/index.html'));
-    //next();
 });
 
 

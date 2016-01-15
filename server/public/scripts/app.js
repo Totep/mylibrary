@@ -1,5 +1,7 @@
 var app = angular.module('app', []);
+
 app.controller("IndexController", ['$scope', '$http', function($scope, $http) {
+
     $scope.book = {};
     $scope.books = [];
     var fetchBooks = function() {
@@ -37,9 +39,10 @@ app.controller("IndexController", ['$scope', '$http', function($scope, $http) {
     $scope.hover = function(books) {
         return books.showDelete = ! books.showDelete;
     };
-    $scope.delete = function(books){
+    $scope.remove = function(books){
         alert("Deleting the book " + book.title);
-        return books.show = false;
+        return book.show = false;
     };
+
 
 }]);

@@ -38,4 +38,8 @@ router.get('/search', function(request, response, next){
     });
 });
 
+router.delete('/remove', function(request, response, next){
+    next();
+})
+
 module.exports = router;

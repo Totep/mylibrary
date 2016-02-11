@@ -39,8 +39,14 @@ app.controller("IndexController", ['$scope', '$http', function($scope, $http) {
     $scope.hover = function(books) {
         return books.showDelete = ! books.showDelete;
     };
-    $scope.remove = function(books){
-        alert("Deleting the book " + book.title);
+    $scope.delete = function(book){
+        $http({
+            url: '/book/remove',
+            method: 'remove',
+            data: book({})
+        }).then(function(response){
+            alert("Deleting the book " + book.title);
+        })
         return book.show = false;
     };
 
